@@ -4,6 +4,19 @@ import pymysql
 
 app = Flask(__name__)
 
+msg = ""
+
+try:
+      conn = pymysql.connect(host = '192.168.1.82',
+                             user = 'local',
+                             passwd = 'userroot')
+      
+       msg = "error conencting"
+      
+except:
+      msg = "error conencting"
+      
+      
 data = {'id':[1,2,3,4,5],
       'temp':[14,15,14,24,10],
       'hum':[0.5,0.9,1.1,0.09,1],
@@ -16,7 +29,7 @@ data = {'id':[1,2,3,4,5],
 @app.route('/')
 def principal():
 
-    return render_template("principal.html")
+    return render_template("principal.html",msg = msg)
 
 @app.route('/database')
 def database():
