@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Dashboard </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="title__bundle">
+      <img id="image" src="/static/smart.svg">
+      <h1 id="title"> Air quality I.O.T system </h1>
+    </div>
+    <div class="nav__bar">
+      <nav>
+        <ul id="menu__bar">
+          <li><a href="database">database</a></li>
+          <li><a href="dashboard">dashboard</a></li>
+          <li><a href="/"> principal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+      <div id="tester" ></div>
+  </main>
+</body>
+<script type="text/javascript" >
+  var x1 = {{data}};
+
+  var x2 = {{data}};
+
+  var trace1 = {
+
+  x: x1,
+
+  type: "histogram",
+
+  };
+
+  var trace2 = {
+
+  x: x2,
+
+  type: "histogram",
+
+  };
+
+  var font = {
+
+  family: 'Courier New, monospace',
+
+  size: 18,
+
+  color: '#FFFFFF'
+  }
+
+  var data = [trace1, trace2];
+
+  var layout = {barmode: "stack",
+              plot_bgcolor:"#fff",
+              paper_bgcolor:"rgba(33, 72, 119, 0.7)",
+              color:"#FFF",font};
+
+  Plotly.newPlot('tester', data, layout);
+</script>
+</html>
