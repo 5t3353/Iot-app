@@ -11,7 +11,7 @@ try:
                              user = 'local',
                              passwd = 'userroot')
       
-       msg = "error conencting"
+      msg = "error conencting"
       
 except:
       msg = "error conencting"
