@@ -8,8 +8,9 @@ msg = ""
 
 try:
       conn = pymysql.connect(host = '192.168.1.82',
-                             user = 'local',
-                             passwd = 'userroot')
+                             user = 'iot-cluster',
+                             password = 'heroku5y5t3m',
+                             bind_address = '201.188.122.150')
       
       msg = "error conencting"
       
