@@ -4,18 +4,7 @@ import pymysql
 
 app = Flask(__name__)
 
-msg = ""
-
-try:
-      conn = pymysql.connect(host = '192.168.1.82',
-                             user = 'iot-cluster',
-                             password = 'heroku5y5t3m',
-                             bind_address = '201.188.122.150')
-      
-      msg = "error conencting"
-      
-except:
-      msg = "error conencting"
+msg = "hi"
       
       
 data = {'id':[1,2,3,4,5],
