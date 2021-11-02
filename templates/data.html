@@ -29,22 +29,19 @@
   <section class="data__table">
     <table id="data">
       <thead>
-        <th> ID </th>
-        <th> TEMPERATURE </th>
-        <th> HUMIDITY </th>
-        <th> CO2 </th>
-        <th> DATE-TIME </th>
+        {% for col in columns %}
+          <th> {{ col }} </th>
+        {% endfor %}
       </thead>
       <tbody>
-        {% for i in range(db['id'] | length) %}
-          <tr>
-               <td> {{ db['id'][i]   }} </td>
-               <td> {{ db['temp'][i] }} </td>
-               <td> {{ db['hum'][i]  }} </td>
-               <td> {{ db['co2'][i]  }} </td>
-               <td> {{ db['datm'][i] }} </td>
-          </tr>
-        {% endfor %}
+        {% for i in range(data | length) %}
+           <tr>
+            <td>{{ data[i].get("TEMPERATURE") }}</td>
+            <td>{{ data[i].get("HUMIDITY") }}</td>
+            <td>{{ data[i].get("CO2") }}</td>
+            <td>{{ data[i].get("DATE-TIME") }}</td>
+           </tr>
+         {% endfor %}
       </tbody>
     </table>
   </section>
