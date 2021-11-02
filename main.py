@@ -9,10 +9,6 @@ client = MongoClient(dir)
 
 app.database = client.get_database("Iot")
 
-stored_data = [s for s in app.database.sensors.find().sort("_id", DESCENDING).limit(10)]
-
-features = list(stored_data[0].keys())[1:]
-
 
 @app.route('/')
 def principal():
@@ -22,7 +18,10 @@ def principal():
 
 @app.route('/database')
 def database():
+    
+    stored_data = [s for s in app.database.sensors.find().sort("_id", DESCENDING).limit(10)]
 
+    features = list(stored_data[0].keys())[1:]
 
     return render_template("data.html" , columns = features,data = stored_data)
 
