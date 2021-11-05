@@ -9,65 +9,167 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css">
-  <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
-    <div class="title__bundle">
-      <img id="image" src="/static/smart.svg">
-      <h1 id="title"> Air quality I.O.T system </h1>
+    <div class="logo__title">
+      <div class="image__bundle">
+        <a id="title" href="/"><img src="/static/smart.svg"></a>
+      </div>
+      <div class="title__bundle">
+        <h1>Air quality I.O.T system </h1>
+      </div>
     </div>
     <div class="nav__bar">
       <nav>
-        <ul id="menu__bar">
-          <li><a href="database">database</a></li>
-          <li><a href="dashboard">dashboard</a></li>
-          <li><a href="/"> principal</a></li>
-        </ul>
+        <a id="db"href="database">database</a>
+        <a id="dsh"href="dashboard">dashboard</a>
       </nav>
     </div>
   </header>
   <main>
-      <div id="tester" ></div>
+    <section class="graph__viz">
+    <div class="wrapper">
+      <h4>Time series</h4>
+      <canvas id="lineChart"></canvas>
+    </div>
+    <div class="wrapper">
+      <h4>Averages</h4>
+      <canvas id="pieChart"></canvas>
+    </div>
+    </section>
   </main>
+  <footer>
+    <section class="footer">
+      Author : Matias henriquez
+    </section>
+  </footer>
 </body>
 <script type="text/javascript" >
-  var x1 = [5];
 
-  var x2 = [7];
 
-  var trace1 = {
+var temperature = [{% for i in temp %}
+                      "{{i}}",
+                   {% endfor %}];
 
-  x: x1,
+var humidity = [{% for i in hum %}
+                      "{{i}}",
+                   {% endfor %}];
 
-  type: "histogram",
+var co2_level = [{% for i in co2 %}
+                      "{{i}}",
+                {% endfor %}];
 
-  };
+                var data =  {  labels : [{% for dt in time_base %}
+                                          "{{dt}}",
+                                        {% endfor %}],
 
-  var trace2 = {
+                             datasets : [{label : "Temperature",
+                                          data : temperature,
+                                          fill : true,
+                                          backgroundColor: "rgba(255, 0, 0, 0.2)",
+                                          lineTension: 0.5,
+                                          borderColor: "rgba(255, 0, 19, 1)",
+                                          pointBorderColor: "rgba(255, 0, 19, 1)",
+                                          pointBackgroundColor: "#FF0000",
+                                          pointBorderWidth: 1,
+                                          pointHoverRadius: 2,
+                                          pointHoverBackgroundColor: "rgba(255, 0, 19, 0.4)",
+                                          pointHoverBorderColor: "rgba(255, 0, 19, 0.4)",
+                                          pointHoverBorderWidth: 2,
+                                          pointRadius: 2,
+                                          pointHitRadius: 5},
 
-  x: x2,
+                                          {label : "Humidity",
+                                          data : humidity,
+                                          fill: true,
+                                          backgroundColor:"rgba(75,192,192,0.2)",
+                                          lineTension: 0.5,
+                                          borderColor: "rgba(75,192,192,1)",
+                                          pointBorderColor: "rgba(75,192,192,1)",
+                                          pointBackgroundColor: "rgba(75,192,192,1)",
+                                          pointBorderWidth: 1,
+                                          pointHoverRadius: 2,
+                                          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                          pointHoverBorderColor: "rgba(75,192,192,1)",
+                                          pointHoverBorderWidth: 2,
+                                          pointRadius: 2,
+                                          pointHitRadius: 5},
 
-  type: "histogram",
+                                          {label : "Co2",
+                                          data : co2_level,
+                                          fill: true,
+                                          backgroundColor : "rgba(0,255,0,0.2)",
+                                          lineTension: 0.5,
+                                          borderColor: "rgba(0,255,0,1)",
+                                          pointBorderColor: "rgba(0,255,0,1)",
+                                          pointBackgroundColor: "#00FF00",
+                                          pointBorderWidth: 1,
+                                          pointHoverRadius: 2,
+                                          pointHoverBackgroundColor: "rgba(255,255,0,1)",
+                                          pointHoverBorderColor: "rgba(255,255,0,1)",
+                                          pointHoverBorderWidth: 2,
+                                          pointRadius: 2,
+                                          pointHitRadius: 5}]}
 
-  };
 
-  var font = {
+                var statistics = {
+                                  labels: ['Avg. temp. °C', 'Avg. hum. %', 'Avg. Co2 level'],
+                                  datasets: [{
+                                      label: 'Averages of last 15 regs',
+                                      data: [{% for s in stats %}"{{s}}",{% endfor %}],
+                                      backgroundColor: [
+                                          'rgba(255, 0, 0, 0.8)',
+                                          "rgba(75,192,192,0.8)",
+                                          "rgba(0,255,0,0.8)",
 
-  family: 'Courier New, monospace',
+                                      ],
+                                      borderColor: [
+                                        'rgba(255, 0, 0, 0.8)',
+                                        "rgba(75,192,192,0.8)",
+                                        "rgba(0,255,0,0.8)",
 
-  size: 18,
+                                      ],
+                                      borderWidth: 3
+                                  }]
+                              }
 
-  color: '#FFFFFF'
-  }
 
-  var data = [trace1, trace2];
+                const options =  {
+                  plugins: {
+                       legend: {
+                           labels: {
+                               font: {
+                                   size: 12
+                               }
+                           }
+                       }
+                   }
+                 }
 
-  var layout = {barmode: "stack",
-              plot_bgcolor:"#fff",
-              paper_bgcolor:"rgba(33, 72, 119, 0.7)",
-              color:"#FFF",font};
+                var ctx1 = document.getElementById('lineChart').getContext('2d');
 
-  Plotly.newPlot('tester', data, layout);
+                var ctx2 = document.getElementById('pieChart').getContext('2d');
+
+
+                var lineChart = new Chart(ctx1,{
+
+                    type : 'line',
+
+                    data : data,
+
+                    options : options});
+
+
+                var pieChart = new Chart(ctx2,{
+
+                    type : 'pie',
+
+                    data : statistics,
+
+                    options : options});
+
 </script>
 </html>
+
