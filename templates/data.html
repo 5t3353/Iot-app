@@ -12,38 +12,47 @@
 </head>
 <body>
   <header>
-    <div class="title__bundle">
-      <img id="image" src="/static/smart.svg">
-      <h1 id="title"> Air quality I.O.T system </h1>
+    <div class="logo__title">
+      <div class="image__bundle">
+        <a id="title" href="/"><img src="/static/smart.svg"></a>
+      </div>
+      <div class="title__bundle">
+        <h1>Air quality I.O.T system </h1>
+      </div>
     </div>
     <div class="nav__bar">
       <nav>
-        <ul id="menu__bar">
-          <li><a href="database">database</a></li>
-          <li><a href="dashboard">dashboard</a></li>
-          <li><a href="/"> principal </a></li>
-        </ul>
+        <a id="db"href="database">database</a>
+        <a id="dsh"href="dashboard">dashboard</a>
       </nav>
     </div>
   </header>
-  <section class="data__table">
-    <table id="data">
-      <thead>
-        {% for col in columns %}
-          <th> {{ col }} </th>
-        {% endfor %}
-      </thead>
-      <tbody>
-        {% for i in range(data | length) %}
-           <tr>
-            <td>{{ data[i].get("TEMPERATURE") }}</td>
-            <td>{{ data[i].get("HUMIDITY") }}</td>
-            <td>{{ data[i].get("CO2") }}</td>
-            <td>{{ data[i].get("DATE-TIME") }}</td>
-           </tr>
-         {% endfor %}
-      </tbody>
-    </table>
-  </section>
+  <main>
+    <section class="data__table">
+      <table>
+        <thead>
+          <th> TEMPERATURE (°C)</th>
+          <th> HUMIDITY (%)</th>
+          <th> CO2 level</th>
+          <th> DATE-TIME </th>
+        </thead>
+        <tbody>
+          {% for i in range(data | length) %}
+             <tr>
+              <td>{{ data[i].get("TEMPERATURE") }}</td>
+              <td>{{ data[i].get("HUMIDITY") }}</td>
+              <td>{{ data[i].get("CO2") }}</td>
+              <td>{{ data[i].get("DATE-TIME") }}</td>
+             </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer>
+    <section class="footer">
+      Author : Matias henriquez
+    </section>
+  </footer>
 </body>
 </html>
