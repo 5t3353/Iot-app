@@ -14,10 +14,10 @@
   <header>
     <div class="logo__title">
       <div class="image__bundle">
-        <a id="title" href="/"><img src="/static/smart.svg"></a>
+        <img src="/static/smart.svg">
       </div>
       <div class="title__bundle">
-        <h1>Air quality I.O.T system </h1>
+        <a id="title" href="/"><h1>Air quality I.O.T system </h1></a>
       </div>
     </div>
     <div class="nav__bar">
@@ -27,57 +27,49 @@
       </nav>
     </div>
   </header>
-
   <main>
-
-  <section>
     <article class="info">
       <h1>This Proyect</h1>
       <p>
         This web corresponds to the result of a university project of the <strong>data networks course</strong> given at the andres bello university,
         which consists of making an <strong>I.O.T. application</strong> using the knowledge acquired about networks and internet.
         the application consists of a system in charge of <strong>monitoring the air quality of an enclosure</strong>, whether domestic, industrial, etc.
-        The variables to be monitored are temperature, humidity and carbon dioxide present in the air of the place,
-        as well as a machine learning model is integrated to make predictions and feedback the system with respect to the patterns learned with the data once stored,
-        this feedback affects to operate a device remotely, so that it can, in addition to monitoring,
-        <strong>control the air quality in the place</strong> with respect to what is inferred from the data obtained from the sensors.
+        The variables to be monitored are temperature, humidity and carbon dioxide present in the air of the place, also, it sends a message to your email
+        when temperature theshold it's overflowed.
        </p>
     </article>
-  </section>
-
-  <section>
     <div class="diagram">
-      <h3>Proyect diagram</h3>
+      <div class="schema">
+        Proyect schema
+      </div>
       <img src="/static/diagram.jpeg" alt="iot" width="100%" height="100%">
     </div>
-  </section>
-
-  <section>
-    <article class="tech">
-      <h3>Technologies used</h3>
-      <ul>
-        <li>
-          <h2>Python 3 <img src="/static/piton.png" alt="python"> </h2>
-          <ul>
-            <li> <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a></li>
-          </ul>
-        </li>
-        <li>python 3</li>
-        <li>python 3</li>
-        <li>python 3</li>
-        <li>python 3</li>
-        <li>python 3</li>
-        <li>python 3</li>
-        <li>python 3</li>
-      </ul>
+    <article class="techs">
+      <div class="subtitle">
+        Technologies used
+      </div>
+      <div class="usedtechs">
+        <ul id="list">
+          <li>
+            <a href="https://www.python.org/">Python 3</a><img class="python"src="/static/piton.png" width="24px" height="24px"alt="python">
+            <ul>
+              <li><a href="https://flask.palletsprojects.com/en/2.0.x/" alt="flask">Flask</a> <img src="/static/chilli.png" alt="chilli"> </li>
+            </ul>
+          </li>
+          <li><a href="https://www.raspberrypi.com/">Raspberry pi 4 model B</a><img src="/static/raspberry-pi.png" alt="raspberry"></li>
+          <li><a href="https://www.arduino.cc/">Arduino mega 2560</a><img src="/static/motherboard.png" alt="arduino"></li>
+          <li><a href="https://www.mongodb.com/atlas/database">Mongodb atlas</a><img src="/static/database.png" alt="mongodb"></li>
+          <li><a href="https://www.chartjs.org/">Chart js</a> <img src="/static/pie-chart.png" alt="chartjs"> </li>
+        </ul>
+      </div>
     </article>
-  </section>
-
   </main>
   <footer>
-    <section class="footer">
-      Author : Matias henriquez
-    </section>
+    <div class="footer">
+      <hr>
+      Copyright @2021  |  Designed by Matias henriquez
+      <hr>
+    </div>
   </footer>
 </body>
 </html>

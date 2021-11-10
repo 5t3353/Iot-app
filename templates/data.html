@@ -14,10 +14,10 @@
   <header>
     <div class="logo__title">
       <div class="image__bundle">
-        <a id="title" href="/"><img src="/static/smart.svg"></a>
+        <img src="/static/smart.svg">
       </div>
       <div class="title__bundle">
-        <h1>Air quality I.O.T system </h1>
+        <a id="title" href="/"><h1>Air quality I.O.T system </h1></a>
       </div>
     </div>
     <div class="nav__bar">
@@ -28,7 +28,6 @@
     </div>
   </header>
   <main>
-    <section class="data__table">
       <table>
         <thead>
           <th> TEMPERATURE (°C)</th>
@@ -47,12 +46,13 @@
            {% endfor %}
         </tbody>
       </table>
-    </section>
   </main>
   <footer>
-    <section class="footer">
-      Author : Matias henriquez
-    </section>
+    <div class="footer">
+      <hr>
+      Copyright @2021  |  Designed by Matias henriquez
+      <hr>
+    </div>
   </footer>
 </body>
 </html>
