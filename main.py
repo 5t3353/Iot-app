@@ -5,7 +5,7 @@ from pymongo import MongoClient,DESCENDING
 
 app = Flask(__name__)
 
-dir = "mongodb+srv://aqiots_syst:ProtectedPa55W@iot-cluster.zo4ge.mongodb.net/test"
+dir = "mongodb+srv://aqiots_syst:password@iot-cluster.zo4ge.mongodb.net/test"
 
 client = MongoClient(dir)
 
